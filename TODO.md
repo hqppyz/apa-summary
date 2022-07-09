@@ -19,7 +19,8 @@
 - [x] Altezza e profondità
 - [x] Valore minimo e massimo dell'altezza
 - [x] Rango e a cosa serve
-- [ ] Ampiezza
+- [x] Ampiezza
+- [ ] Complessità
 
 # Code a priorità
 - [x] Tipi di implementazioni
@@ -64,10 +65,10 @@
 - [x] DFS
 - [x] DFS: Vantaggi e svantaggi tra madj e ladj
 - [ ] DFS: Classificazione degli archi
-- [ ] BFS
+- [x] BFS
 - [ ] Teorema degli alberi ricoprenti minimi
 - [ ] Bellman-Ford
-- [ ] Dijkstra
+- [x] Dijkstra
 - [ ] Kosaraju
 - [ ] Prim
 - [ ] Kruskal

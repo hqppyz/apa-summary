@@ -35,3 +35,35 @@ void merge(list a, list b) {
     a->root = mergeR(a->root, b->root);
 }
 ```
+
+## Esercizio 2
+Data una lista linkata, scrivere una funzione che verifichi se si ripiega su se stessa, e ritorni il nodo in questione, altrimenti NULL.
+
+```c
+int calculateHeight(Node root, Node node) {
+    int height = 0;
+    for (link t = root; t != NULL; t = t->next) {
+        if (t == node) {
+            return height;
+        }
+
+        ++height;
+    }
+
+    return -1;
+}
+
+Node getFoldedNode(Node root) {
+    int currentHeight = 0;
+    for (link t = root; t != NULL; t = t->next) {
+        ++currentHeight;
+
+        int height = calculateHeight(root, t->next);
+        if (height == -1 || height < currentHeight) {
+            return t;
+        }
+    }
+
+    return NULL;
+}
+```

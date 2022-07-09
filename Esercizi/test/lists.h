@@ -1,26 +1,38 @@
-typedef struct list_s *list;
+#ifndef _LISTS_H
+#define _LISTS_H
 
-typedef struct link_s *link;
+#include <stdio.h>
 
-struct list_s
-{
-    link head;
+typedef struct list_s *List;
+
+typedef struct link_s *Link;
+
+struct list_s {
+    Link head;
 };
 
-struct link_s
-{
+struct link_s {
     int key;
-    link next;
+    Link next;
 };
 
-link LINKnew(int key, link next);
+Link LINKnew(int key, Link next);
 
-void LINKfree(link head);
+void LINKfree(Link head);
 
-list LISTnew(link head);
+int LINKprint(Link link, FILE *stream);
 
-void LISTfree(list list);
+int LINKprettyPrint(Link link, int first, int last);
 
-void LISTmerge(list a, list b);
+List LISTnew(Link head);
 
-void LISTwalk(list list, void (*visit)(link, int, int));
+void LISTfree(List list);
+
+void LISTwalk(List list, int (*visit)(Link, int, int));
+
+void LISTmerge(List a, List b);
+
+Link LISTgetFirstFolded(List list);
+
+#endif // _LISTS_H
+

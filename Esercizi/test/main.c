@@ -1,37 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lists.h"
+#include "es1.h"
+#include "es2.h"
+#include "es3.h"
 
-void printLinkKey(link l, int first, int last) {
-    if (!first) {
-        printf(", ");
+int main(int argc, char **argv) {
+    if (argc < 2) {
+        printf("ERROR: You must specify the exercise number.");
+        return 1;
     }
-    printf("%d", l->key);
+
+    int es = atoi(argv[1]);
+    switch (es) {
+        case 1:
+            return es1main(argc, argv);
+        case 2:
+            return es2main(argc, argv);
+		case 3:
+			return es3main(argc, argv);
+    }
 }
 
-int main(int argc, char **argv)
-{
-    // list a = LISTnew(LINKnew(0, LINKnew(10, NULL)));
-    list a = LISTnew(NULL);
-
-    list b = LISTnew(LINKnew(3, LINKnew(4, LINKnew(5, NULL))));
-    // list b = LISTnew(NULL);
-
-    printf("A: {");
-    LISTwalk(a, printLinkKey);
-    printf("}\n");
-
-    printf("B: {");
-    LISTwalk(b, printLinkKey);
-    printf("}\n");
-
-    LISTmerge(a, b);
-    printf("A[merged]: {");
-    LISTwalk(a, printLinkKey);
-    printf("}\n");
-
-    LISTfree(a);
-    // free(b); // b punta alla stessa testa di a, liberarla con LISTfree libererebbe la testa due volte
-
-    return 0;
-}

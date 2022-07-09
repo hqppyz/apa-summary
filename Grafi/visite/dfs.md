@@ -1,4 +1,4 @@
-# Visita in Profondità
+# DFS: Visita in Profondità
 A partire da un vertice v, visito il grafo G, scopro ricorsivamente ogni vertice adiacente, se non ancora scoperto, applicando la dfs.
 
 La differenza tra le complessità dipende dal fatto che la lista è più vantagiosa in quanto ottengo facilmente ogni adiacenza di un vertice, e il totale sarà $|E|$, mentre con la matrice ho bisogno di testare ogni vertice per ogni vertice, quindi il totale è $|V|^2$.
@@ -8,8 +8,9 @@ La differenza tra le complessità dipende dal fatto che la lista è più vantagi
 ## Complessità
 1. Inizializzazione: $\theta(|V|)$
 <br>*riempio pre[V] e post[V] con -1*
-2. Visito ricorsiva da v: $\theta(|E|)$
+2. Visita ricorsiva da v: $O(|E|)$
 <br>*nel caso peggiore v ha un arco verso ogni w*
+<br>*in tutto* $\theta(|E|)$
 
 $T(n)=\theta(|V|+|E|)$
 
