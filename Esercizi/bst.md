@@ -25,3 +25,53 @@ int contaCugini(Node node) {
     return contaFigliDiLivello(node->parent->parent, 2);
 }
 ```
+
+## Esercizio 2
+Trovare il figlio con chiave k e portarlo in radice del BST.
+Poi rendere tutto il BST come figlio destro della nuova radice.
+```c
+Node rotateLeft(Node root) {
+    Node y = root->left;
+    root->left = y->right;
+    y->right = root;
+    return y;
+}
+
+Node rotateRight(Node root) {
+    Node y = root->right;
+    root->right = y->left;
+    y->left = root;
+    return y;
+}
+
+int TREEsize(Node node) {
+    if (node == NULL) {
+        return 0;
+    }
+
+    return 1 + TREEsize(node->left) + TREEsize(node->right);
+}
+
+Node partitionR(Node node, int rank) {
+    if (node == NULL) {
+        // Rank non trovato
+        return NULL;
+    }
+
+    int leftSize = TREEsize(node);
+    if (rank == leftSize) {
+        // Rank trovato
+        return node;
+    } else if (rank < leftSize) {
+        node->left = partitionR(node->left, rank);
+        return rotateRight(node);
+    } else {
+        node->right = partitionR(node->right, rank - leftSize - 1);
+        return rotateLeft(node);
+    }
+}
+
+void esercizio(BST bst, int k) {
+    bst->root = partitionR(bst->root, k);
+}
+```

@@ -8,4 +8,3 @@ compile:
 
 test:
 	./main.o 3
-

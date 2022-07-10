@@ -16,7 +16,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4303dc02-8267-4116-86f4-3490bb7c3e33" name="Changes" comment="" />
+    <list default="true" id="4303dc02-8267-4116-86f4-3490bb7c3e33" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Alberi/partizione.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Alberi/partizione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bst.md" beforeDir="false" afterPath="$PROJECT_DIR$/../bst.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Grafi/visite/dfs.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Grafi/visite/dfs.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +94,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "C:/Users/happy/Documents/MEGAsync/Algoritmi e Programmazione/Summary/Esercizi/test",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++"
+    "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,17 +103,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Makefile Application.compile">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="2" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="test" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/main.o">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="compile" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="3" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="test" TARGET_NAME="compile" CONFIG_NAME="compile" version="1" RUN_PATH="$PROJECT_DIR$/main.o">
+    <configuration name="compile" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="4" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="test" TARGET_NAME="compile" CONFIG_NAME="compile" version="1" RUN_PATH="$PROJECT_DIR$/main.o">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -113,6 +116,11 @@
     <configuration name="test" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="test" TARGET_NAME="test" CONFIG_NAME="test" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -130,6 +138,7 @@
       <option name="presentableId" value="Default" />
       <updated>1657284877773</updated>
       <workItem from="1657284879407" duration="5192000" />
+      <workItem from="1657383505035" duration="1506000" />
     </task>
     <servers />
   </component>

@@ -43,7 +43,7 @@ void GRAPHdfs(Graph G, int v) {
         }
     }
 
-    // [ PRINT ]
+    // [[ PRINT ]]
     printf("Tempi di scoperta:\n");
     for (int u = 0; u < G->V; ++u) {
         printf("%s: %d/%d\n", STsearchByIndex(u), pre[u], post[u]);
@@ -114,7 +114,7 @@ void GRAPHdfs(Graph G, int v) {
         }
     }
 
-    // [ PRINT ]
+    // [[ PRINT ]]
     printf("Tempi di scoperta:\n");
     for (int u = 0; u < G->V; ++u) {
         printf("%s: %d/%d\n", STsearchByIndex(u), pre[u], post[u]);
