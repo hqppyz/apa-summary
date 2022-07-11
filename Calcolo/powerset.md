@@ -1,0 +1,218 @@
+# Insieme delle Parti
+L'insieme delle parti *(o Powerset)*, è l'insieme dei sottoinsiemi di $S$.
+
+Esempio:
+<br>$S = {0, 1, 2}$
+<br>$\mathcal{P}(S) = \{$
+<br>$\space\space\space\space\{\}$ `// k = 0`
+<br>$\space\space\space\space\{0\}, \{1\}, \{2\}$ `// k = 1`
+<br>$\space\space\space\space\{0, 1\}, \{0, 2\}, \{1, 2\}$ `// k = 2`
+<br>$\space\space\space\space\{0, 1, 2\}$ `// k = 3`
+<br>$\}$
+
+I Powerset possono essere implementati tramite diversi approcci.
+
+## 1. Divide et impera
+Ad ogni iterazione:
+1. Chiude l'insieme dei valori scelti fino ad ora.
+2. Continua l'esplorazione partendo dall'ultimo valore della soluzione.
+
+`Wrapper`
+```c
+void powerset(int *valori, int n) {
+    int *soluzione = malloc(n * sizeof(int));
+    powersetR(0, valori, soluzione, n, 0);
+    free(soluzione);
+}
+```
+
+`Ricorsiva`
+```c
+void powersetR(int level, int *valori, int *soluzione, int n, int start) {
+    // [[ PRINT ]] da 0 a level, escluso
+    for (int i = start; i < n; ++i) {
+        soluzione[level] = i;
+        powersetR(level + 1, valori, soluzione, n, i + 1);
+    }
+}
+```
+
+## 2. Disposizioni con Ripetizioni
+Ad ogni livello, assegno una visibilità di 0 o 1.
+<br>Per ogni insieme che raggiunge la terminazione (l'ultimo livello), prendo in considerazione solo l'i-esimo elemento se la i-esima soluzione è 1, altrimenti lo ignoro.
+
+`Wrapper`
+```c
+void powersetDISP(int *valori, int n) {
+    int *soluzione = malloc(n * sizeof(int));
+    powersetDISPR(0, valori, soluzione, n);
+    free(soluzione);
+}
+```
+
+`Ricorsiva`
+```c
+void powersetDISPR(int level, int *valori, int *soluzione, int n) {
+    if (level >= n) {
+        // [[ PRINT ]] da 0 a n, se soluzione[i] è 1
+        for (int i = 0; i < n; ++i) {
+            if (soluzione[i]) {
+                printf("%d ", valori[i]);
+            }
+        }
+        return;
+    }
+
+    // Due visibilità possibili: appartenente (1) o non appartenente (0)
+    for (int i = 0; i <= 1; ++i) {
+        soluzione[level] = i;
+        powersetDISP(level + 1, valori, soluzione, n);
+    }
+}
+```
+
+## 3. Combinazioni Ripetute
+`Wrapper`
+```c
+void powersetCOMB(int *valori, int n) {
+    int *soluzione = malloc(n * sizeof(int));
+    for (int k = 0; k <= n; ++k) {
+        combSempR(0, valori, soluzione, n, k, 0);
+    }
+    free(soluzione);
+}
+```
+
+```c
+void combSempR(int level, int *valori, int *soluzione, int n, int k, int start) {
+    if (level >= k) {
+        // [[ PRINT ]] da 0 a k
+        return;
+    }
+
+    for (int i = start; i < n; ++i) {
+        soluzione[level] = i;
+        combSempR(level + 1, valori, soluzione, n, k, i + 1);
+    }
+}
+```
+
+---
+
+# Partizioni di un insieme
+Partizionare un insieme $S$ significa dividerne gli elementi in blocchi.
+
+## Disposizioni con Ripetizioni
+Per ottenere una partizione in $k$ blocchi, si possono usare delle disposizioni con ripetizione, simili a quelle del Powerset.
+<br>La differenza è che invece del powerset, non si rappresentano i diversi stadi di ogni elemento *(appartenente o non appartenente)*, ma si rappresenta a quale blocco $m$ appartiene.
+
+`Wrapper
+```c
+void partizioniDISP(int *valori, int n, int k) {
+    int *soluzione = malloc(n * sizeof(int));
+    partizioniDISPR(0, valori, soluzione, n, k);
+    free(soluzione);
+}
+```
+
+`Ricorsiva`
+```c
+void partizioniDISPR(int level, int *valori, int *soluzione, int n, int k) {
+    if (level >= n) {
+        // Quando ho assegnato ogni possibile elemento ad un blocco
+        // Devo controllare che ci siano esattamente k blocchi con ognuno almeno 1 elemento
+
+        for (int m = 0; m < k; ++m) {
+            int used = 0;
+            for (int i = 0; i < n; ++i) {
+                if (soluzione[i] = m) {
+                    used = 1;
+                    break;
+                }
+            }
+
+            if (!used) {
+                return;
+            }
+        }
+
+        // [[ PRINT ]]
+
+        return;
+    }
+
+    // Assegno al valore attuale ogni possibile blocco
+    for (int m = 0; m < k; ++i) {
+        soluzione[level] = m;
+        partizioniDISPR(level + 1, valori, soluzione, n, k);
+    }
+}
+```
+
+## Algoritmo di Er
+L'algoritmo di Er trova tutte le possibili partizioni di $S$ in un numero variante $k$ di blocchi,
+<br>$1 \le k \le n$
+
+Si divide in 2 ricorsioni:
+1. L'elemento corrente viene attribuito ad ogni blocco esistente $[0, m]$.
+<br>Si ricorre al prossimo elemento *(ogni volta)*.
+2. L'elemento corrente viene attribuito ad un nuovo blocco $m + 1$.
+<br>Si ricorre sul prossimo elemento, questa volta passando il nuovo blocco $m + 1$.
+
+`Wrapper`
+```c
+void er(int *valori, int n) {
+    int *soluzione = malloc(n * sizeof(int));
+    erR(0, valori, soluzione, n, 0);
+    free(soluzione);
+}
+```
+
+`Ricorsiva`
+```c
+void erR(int level, int *valori, int *soluzione, int n, int m) {
+    if (level >= n) {
+        // [[ PRINT ]] da 0 a n elementi ognuno nel blocco soluzione[i]
+
+        return;
+    }
+
+    for (int i = 0; i < m; ++i) {
+        soluzione[level] = i;
+        erR(level + 1, valori, soluzione, n, m);
+    }
+
+    soluzione[level] = m;
+    erR(level + 1, valori, soluzione, n, m + 1);
+}
+```
+
+Una versione più specifica è quando sappiamo già in quanti blocchi vogliamo partizionare $S$, e si implementa nello stesso identico modo, ma controllando nella terminazione che gli $m$ blocchi della soluzione attuale siano $k$.
+
+`Wrapper`
+```c
+void erSpecific(int *valori, int n, int k) {
+    int *soluzione = malloc(n * sizeof(int));
+    erR(0, valori, soluzione, n, k, 0);
+    free(soluzione);
+}
+```
+
+`Ricorsiva`
+```c
+void erSpecificR(int level, int *valori, int *soluzione, int n, int k, int m) {
+    if (level >= n) {
+        // [[ PRINT ]] da 0 a n elementi ognuno nel blocco soluzione[i]
+
+        return;
+    }
+
+    for (int i = 0; i < m; ++i) {
+        soluzione[level] = i;
+        erR(level + 1, valori, soluzione, n, m);
+    }
+
+    soluzione[level] = m;
+    erR(level + 1, valori, soluzione, n, m + 1);
+}
+```

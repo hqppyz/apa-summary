@@ -4,7 +4,7 @@ clean:
 	rm -f *.o
 
 compile:
-	gcc lists.h lists.c es1.h es1.c es2.h es2.c es3.h es3.c main.c -o main.o
+	gcc lists.h lists.c es1.h es1.c es2.h es2.c es3.h es3.c es4.h es4.c main.c -o main.o
 
 test:
 	./main.o 3

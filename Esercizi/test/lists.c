@@ -40,6 +40,17 @@ int LINKprettyPrint(Link link, int first, int last) {
     return printf(", %d", link->key);
 }
 
+Link LINKinvert(Link head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Link child = head->next;
+    head->next = child->next;
+    child->next = head;
+    return LINKinvert(child);
+}
+
 void walkR(Link head, int first, int (*visit)(Link, int, int)) {
     if (head == NULL) {
         return;
@@ -119,6 +130,18 @@ Link LISTgetFirstFolded(List list) {
     }
 
     return NULL;
+}
+
+void LISTinvert(List list) {
+    if (list == NULL || list->head == NULL) {
+        return;
+    }
+
+    for () {
+        // Il current punta al precedente
+        // Il precedente punta
+    }
+    list->head = LINKinvert(list->head);
 }
 
 #endif //LISTS_H

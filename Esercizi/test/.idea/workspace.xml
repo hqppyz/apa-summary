@@ -17,13 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4303dc02-8267-4116-86f4-3490bb7c3e33" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Alberi/partizione.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Alberi/partizione.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bst.md" beforeDir="false" afterPath="$PROJECT_DIR$/../bst.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lists.c" beforeDir="false" afterPath="$PROJECT_DIR$/lists.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lists.h" beforeDir="false" afterPath="$PROJECT_DIR$/lists.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Grafi/visite/dfs.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Grafi/visite/dfs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Grafi/alberi_ricoprenti/mst.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Grafi/alberi_ricoprenti/mst.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,18 +84,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/happy/Documents/MEGAsync/Algoritmi e Programmazione/Summary/Esercizi/test",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/happy/Documents/MEGAsync/Algoritmi e Programmazione/Summary/Esercizi/test&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\happy\Documents\MEGAsync\Algoritmi e Programmazione\Summary\Esercizi\test" />
@@ -118,11 +117,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Makefile Application.all" />
       <item itemvalue="Makefile Application.compile" />
@@ -139,6 +133,7 @@
       <updated>1657284877773</updated>
       <workItem from="1657284879407" duration="5192000" />
       <workItem from="1657383505035" duration="1506000" />
+      <workItem from="1657526447799" duration="227000" />
     </task>
     <servers />
   </component>

@@ -22,6 +22,3 @@ Ad ogni passo:
 1. Si ipotizza che la soluzione corrente sia un sottoinsieme della soluzione ottima.
 2. Si aggiunge un arco alla soluzione corrente, e si verifica se rimane corretta *(si aggiunge un arco sicuro)*.
 <br>Un arco si dice sicuro se, aggiungendolo ad un MST, questo resta un MST *(no cicli)*.
-
-## Teorema degli Alberi Ricoprenti Minimi
-

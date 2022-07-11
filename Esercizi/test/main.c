@@ -3,6 +3,7 @@
 #include "es1.h"
 #include "es2.h"
 #include "es3.h"
+#include "es4.h"
 
 int main(int argc, char **argv) {
     if (argc < 2) {
@@ -18,6 +19,8 @@ int main(int argc, char **argv) {
             return es2main(argc, argv);
 		case 3:
 			return es3main(argc, argv);
+        case 4:
+            return es4main(argc, argv);
     }
 }
 
