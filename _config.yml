@@ -27,7 +27,6 @@ author:
 plugins:
   - jekyll-sitemap
   - bourbon
-  - jekyll-katex
 
 compress_html:
   comments: all # ["<!--", "-->"]
