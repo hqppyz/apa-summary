@@ -24,7 +24,7 @@ int LINKprint(Link link, FILE *stream);
 
 int LINKprettyPrint(Link link, int first, int last);
 
-Link LINKinvert(Link head);
+Link LINKexpand(Link head);
 
 List LISTnew(Link head);
 
@@ -37,6 +37,12 @@ void LISTmerge(List a, List b);
 Link LISTgetFirstFolded(List list);
 
 void LISTinvert(List list);
+
+void LISTsort(List list);
+
+void LISTexpand(List list);
+
+void LISTdeleteOdds(List list);
 
 #endif // _LISTS_H
 

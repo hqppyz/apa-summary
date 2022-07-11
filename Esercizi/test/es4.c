@@ -12,7 +12,7 @@ void testListInvert(char *name, List list) {
 }
 
 int es4main(int argc, char **argv) {
-    testListInvert("Lista normale 1, 2, 3", LISTnew(LINKnew(1, LINKnew(2, LINKnew(3, NULL)))));
+    testListInvert("Lista normale 1, 2, 3, 4", LISTnew(LINKnew(1, LINKnew(2, LINKnew(3, LINKnew(4, NULL))))));
 
     return 0;
 }

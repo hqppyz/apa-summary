@@ -67,3 +67,45 @@ Node getFoldedNode(Node root) {
     return NULL;
 }
 ```
+
+## Esercizio 3
+Data una lista linkata (o doppiamente linkata) ordinarla.
+```c
+typedef struct list_s *list;
+
+typedef struct link_s *link;
+
+struct list_s {
+    link head;
+}
+
+struct link_s {
+    int value;
+    link next;
+}
+
+void LISTsort(List list) {
+    if (list == NULL || list->head == NULL) {
+        return;
+    }
+
+    // Bubble Sort
+    int ordered;
+    do {
+        ordered = 1;
+        for (link t = list->head; t != NULL; t = t->next) {
+            if (t->next == NULL) {
+                break;
+            }
+
+            if (t->value > t->next->value) {
+                ordered = 0;
+
+                int tmp = t->value;
+                t->value = t->next->value;
+                t->next->value = tmp;
+            }
+        }
+    } while(!ordered);
+}
+```

@@ -40,15 +40,38 @@ int LINKprettyPrint(Link link, int first, int last) {
     return printf(", %d", link->key);
 }
 
+//Link LINKinvert(Link head) {
+//    if (head == NULL || head->next == NULL) {
+//        return head;
+//    }
+//
+//    Link child = head->next;
+//    head->next = child->next;
+//    child->next = head;
+//    return LINKinvert(child);
+//}
+
 Link LINKinvert(Link head) {
     if (head == NULL || head->next == NULL) {
         return head;
     }
 
-    Link child = head->next;
-    head->next = child->next;
-    child->next = head;
-    return LINKinvert(child);
+    Link last = LINKinvert(head->next);
+    head->next->next = head;
+    return last;
+}
+
+Link LINKexpand(Link head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    if (head->key + 1 < head->next->key) {
+        head->next = LINKnew(head->key + 1, head->next);
+    }
+
+    head->next = LINKexpand(head->next);
+    return head;
 }
 
 void walkR(Link head, int first, int (*visit)(Link, int, int)) {
@@ -132,16 +155,137 @@ Link LISTgetFirstFolded(List list) {
     return NULL;
 }
 
+Link LINKinvertWalter(Link head) {
+    Link padre = head;
+    Link figlio = head->next;
+    head->next = NULL;
+
+    Link current = figlio;
+    while (current->next != NULL) {
+        current = current->next;
+        figlio->next = padre;
+        padre = figlio;
+        figlio = current;
+    }
+
+    current->next = padre;
+    return current;
+}
+
+Link LINKinvertNuova(Link head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Link padre = head;
+    Link figlio = head->next;
+    // Finché esistono figli può continuare
+    while (figlio != NULL) {
+        Link nipote = figlio->next;
+
+        // Il figlio deve puntare al padre
+        figlio->next = padre;
+
+        // Aggiorno il padre
+        padre = figlio;
+
+        // E continuo col nuovo figlio
+        figlio = nipote;
+    }
+
+    // Aggiorno la vecchia testa, che ora sarà l'ultimo valore
+    head->next = NULL;
+
+    // E ritorno l'ultimo figlio (che in questo momento è nullo quindi ritorno il precedente ovvero il padre)
+    return padre;
+}
+
 void LISTinvert(List list) {
+    // Nuova
+    list->head = LINKinvertNuova(list->head);
+
+    // Walter
+//    list->head = LINKinvertWalter(list->head);
+
+    // Mia
+//    if (list->head == NULL) {
+//        return;
+//    }
+//
+//    Link previousHead = list->head;
+//    list->head = LINKinvert(list->head);
+//    previousHead->next = NULL;
+}
+
+void LISTsort(List list) {
     if (list == NULL || list->head == NULL) {
         return;
     }
 
-    for () {
-        // Il current punta al precedente
-        // Il precedente punta
+    // Bubble Sort
+    int ordered;
+    do {
+        ordered = 1;
+        for (Link t = list->head; t != NULL; t = t->next) {
+            if (t->next == NULL) {
+                break;
+            }
+
+            if (t->key > t->next->key) {
+                ordered = 0;
+
+                int tmp = t->key;
+                t->key = t->next->key;
+                t->next->key = tmp;
+            }
+        }
+    } while (!ordered);
+}
+
+void LISTexpand(List list) {
+    if (list == NULL || list->head == NULL) {
+        return;
     }
-    list->head = LINKinvert(list->head);
+
+    list->head = LINKexpand(list->head);
+}
+
+Link LINKdeleteIf(Link head, int delete) {
+    if (head == NULL) {
+        return head;
+    }
+
+    head->next = LINKdeleteIf(head->next, !delete);
+    if (delete) {
+        Link next = head->next;
+        free(head);
+        return next;
+    } else {
+        return head;
+    }
+}
+
+Link LINKdeleteOdds(Link head) {
+    int deleteNext = 1;
+    for (Link t = head; t != NULL && t->next != NULL; t = t->next) {
+        if (deleteNext) {
+            Link child = t->next;
+            t->next = child->next;
+            free(child);
+        }
+
+        deleteNext = !deleteNext;
+    }
+
+    return head;
+}
+
+void LISTdeleteOdds(List list) {
+    if (list == NULL) {
+        return;
+    }
+
+    list->head = LINKdeleteOdds(list->head);
 }
 
 #endif //LISTS_H
