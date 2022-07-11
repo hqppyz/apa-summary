@@ -1,0 +1,37 @@
+title_left: happyz
+title_right: leaf
+description: Yup, that's me. You're probably wondering how I ended up in this situation.
+keywords: Algoritmi e Programmazione, APA, Algoritmi e Strutture Dati, Algoritmi e Strutture, PoliTo, Politecnico di Torino, Ingegneria, Ingegneria Informatica, Marco Montanari, happyzleaf
+url: https://happyzleaf.com/apa-summary
+baseurl: ""
+cover: ""
+
+google_analytics: UA-135650940-1
+twitter_username: happyzlife
+
+markdown: kramdown
+highlighter: rouge
+
+source: ./
+destination: ./_site
+
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+author:
+  name: Marco Montanari
+  mail: marco@montanari.cc
+  avatar: /assets/images/avatar.png
+
+plugins:
+  - jekyll-sitemap
+  - bourbon
+
+compress_html:
+  comments: all # ["<!--", "-->"]
+
+exclude:
+  - _ignore
+  - .idea
+  - .vscode
