@@ -6,7 +6,7 @@ url: https://happyzleaf.com/apa-summary
 baseurl: ""
 cover: ""
 
-google_analytics: UA-135650940-1
+# google_analytics: UA-135650940-1
 
 markdown: kramdown
 highlighter: rouge
@@ -26,9 +26,6 @@ author:
 plugins:
   - jekyll-sitemap
   - bourbon
-
-compress_html:
-  comments: all # ["<!--", "-->"]
 
 exclude:
   - _ignore
