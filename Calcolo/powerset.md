@@ -44,14 +44,30 @@ Ad ogni livello, assegno una visibilità di 0 o 1.
 `Wrapper`
 ```c
 void powersetDISP(int *valori, int n) {
-    int *soluzione = malloc(n * sizeof(int));
-    powersetDISPR(0, valori, soluzione, n);
+    int *soluzione = calloc(n, sizeof(int));
+
+    dispRipR(0, valori, soluzione, n = 2, k = n);
+    // powersetDISPR(0, valori, soluzione, n);
+
     free(soluzione);
 }
 ```
 
 `Ricorsiva`
 ```c
+void dispRipR(int livello, const int *valori, int *soluzione, int n, int k) {
+    if (livello >= k) {
+        // Terminazione
+        // [[ PRINT ]]
+        return;
+    }
+
+    for (int i = 0; i < n; ++i) {
+        soluzione[livello] = i;
+        dispRipR(livello + 1, valori, soluzione, n, k);
+    }
+}
+
 void powersetDISPR(int level, int *valori, int *soluzione, int n) {
     if (level >= n) {
         // [[ PRINT ]] da 0 a n, se soluzione[i] è 1
@@ -63,11 +79,19 @@ void powersetDISPR(int level, int *valori, int *soluzione, int n) {
         return;
     }
 
+    // i-esimo livello escluso
+    soluzione[level] = 0;
+    powersetDISP(level + 1, valori, soluzione, n);
+
+    // i-esimo livello incluso
+    soluzione[level] = 1;
+    powersetDISP(level + 1, valori, soluzione, n);
+
     // Due visibilità possibili: appartenente (1) o non appartenente (0)
-    for (int i = 0; i <= 1; ++i) {
-        soluzione[level] = i;
-        powersetDISP(level + 1, valori, soluzione, n);
-    }
+    // for (int i = 0; i <= 1; ++i) {
+    //     soluzione[level] = i;
+    //     powersetDISP(level + 1, valori, soluzione, n);
+    // }
 }
 ```
 
