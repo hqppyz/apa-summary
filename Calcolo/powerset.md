@@ -46,8 +46,8 @@ Ad ogni livello, assegno una visibilità di 0 o 1.
 void powersetDISP(int *valori, int n) {
     int *soluzione = calloc(n, sizeof(int));
 
+    // Due visibilità possibili: appartenente (1) o non appartenente (0)
     dispRipR(0, valori, soluzione, n = 2, k = n);
-    // powersetDISPR(0, valori, soluzione, n);
 
     free(soluzione);
 }
@@ -67,42 +67,18 @@ void dispRipR(int livello, const int *valori, int *soluzione, int n, int k) {
         dispRipR(livello + 1, valori, soluzione, n, k);
     }
 }
-
-void powersetDISPR(int level, int *valori, int *soluzione, int n) {
-    if (level >= n) {
-        // [[ PRINT ]] da 0 a n, se soluzione[i] è 1
-        for (int i = 0; i < n; ++i) {
-            if (soluzione[i]) {
-                printf("%d ", valori[i]);
-            }
-        }
-        return;
-    }
-
-    // i-esimo livello escluso
-    soluzione[level] = 0;
-    powersetDISP(level + 1, valori, soluzione, n);
-
-    // i-esimo livello incluso
-    soluzione[level] = 1;
-    powersetDISP(level + 1, valori, soluzione, n);
-
-    // Due visibilità possibili: appartenente (1) o non appartenente (0)
-    // for (int i = 0; i <= 1; ++i) {
-    //     soluzione[level] = i;
-    //     powersetDISP(level + 1, valori, soluzione, n);
-    // }
-}
 ```
 
 ## 3. Combinazioni Ripetute
 `Wrapper`
 ```c
 void powersetCOMB(int *valori, int n) {
-    int *soluzione = malloc(n * sizeof(int));
+    int *soluzione = calloc(n, sizeof(int));
+
     for (int k = 0; k <= n; ++k) {
         combSempR(0, valori, soluzione, n, k, 0);
     }
+
     free(soluzione);
 }
 ```
@@ -133,42 +109,39 @@ Per ottenere una partizione in $k$ blocchi, si possono usare delle disposizioni 
 `Wrapper
 ```c
 void partizioniDISP(int *valori, int n, int k) {
-    int *soluzione = malloc(n * sizeof(int));
-    partizioniDISPR(0, valori, soluzione, n, k);
+    int *soluzione = calloc(n, sizeof(int));
+
+    dispRipR(0, valori, soluzione, n = k, k = n);
+
     free(soluzione);
 }
 ```
 
 `Ricorsiva`
 ```c
-void partizioniDISPR(int level, int *valori, int *soluzione, int n, int k) {
-    if (level >= n) {
-        // Quando ho assegnato ogni possibile elemento ad un blocco
-        // Devo controllare che ci siano esattamente k blocchi con ognuno almeno 1 elemento
-
-        for (int m = 0; m < k; ++m) {
+void dispRipR(int livello, const int *valori, int *soluzione, int n, int k) {
+    if (livello >= k) {
+        // Backtrack
+        for (int m = 0; m < n; ++m) {
             int used = 0;
-            for (int i = 0; i < n; ++i) {
+            for (int i = 0; i < k; ++i) {
                 if (soluzione[i] = m) {
                     used = 1;
                     break;
                 }
             }
 
-            if (!used) {
-                return;
-            }
+            if (!used) return;
         }
 
+        // Terminazione
         // [[ PRINT ]]
-
         return;
     }
 
-    // Assegno al valore attuale ogni possibile blocco
-    for (int m = 0; m < k; ++i) {
-        soluzione[level] = m;
-        partizioniDISPR(level + 1, valori, soluzione, n, k);
+    for (int i = 0; i < n; ++i) {
+        soluzione[livello] = i;
+        dispRipR(livello + 1, valori, soluzione, n, k);
     }
 }
 ```
