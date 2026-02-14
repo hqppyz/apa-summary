@@ -29,8 +29,8 @@ void dispSemp(int *valori, int n, int k) {
 
 `Implementazione`
 ```c
-void dispSempR(int level, int *valori, int *soluzione, int *mark, int n, int k) {
-    if (level >= k) {
+void dispSempR(int livello, int *valori, int *soluzione, int *mark, int n, int k) {
+    if (livello >= k) {
         // Terminazione
         // [[ PRINT ]]
         return;
@@ -40,8 +40,8 @@ void dispSempR(int level, int *valori, int *soluzione, int *mark, int n, int k) 
         if (mark[i] != 0) continue;
 
         mark[i] = 1;
-        soluzione[level] = valori[i];
-        dispSempR(level + 1, valori, soluzione, mark, n, k);
+        soluzione[livello] = valori[i];
+        dispSempR(livello + 1, valori, soluzione, mark, n, k);
         mark[i] = 0;
     }
 }

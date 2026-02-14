@@ -20,19 +20,22 @@ Ad ogni iterazione:
 `Wrapper`
 ```c
 void powerset(int *valori, int n) {
-    int *soluzione = malloc(n * sizeof(int));
+    int *soluzione = calloc(n, sizeof(int));
+
     powersetR(0, valori, soluzione, n, 0);
+
     free(soluzione);
 }
 ```
 
 `Ricorsiva`
 ```c
-void powersetR(int level, int *valori, int *soluzione, int n, int start) {
-    // [[ PRINT ]] da 0 a level, escluso
+void powersetR(int livello, int *valori, int *soluzione, int n, int start) {
+    // [[ PRINT ]] da 0 a livello, escluso
+
     for (int i = start; i < n; ++i) {
-        soluzione[level] = i;
-        powersetR(level + 1, valori, soluzione, n, i + 1);
+        soluzione[livello] = i;
+        powersetR(livello + 1, valori, soluzione, n, i + 1);
     }
 }
 ```
@@ -47,7 +50,7 @@ void powersetDISP(int *valori, int n) {
     int *soluzione = calloc(n, sizeof(int));
 
     // Due visibilità possibili: appartenente (1) o non appartenente (0)
-    dispRipR(0, valori, soluzione, n = 2, k = n);
+    dispRipR(0, valori, soluzione, n: 2, k: n);
 
     free(soluzione);
 }
@@ -72,7 +75,7 @@ void dispRipR(int livello, const int *valori, int *soluzione, int n, int k) {
 ## 3. Combinazioni Ripetute
 `Wrapper`
 ```c
-void powersetCOMB(int *valori, int n) {
+void powersetCOMBSEMP(int *valori, int n) {
     int *soluzione = calloc(n, sizeof(int));
 
     for (int k = 0; k <= n; ++k) {
@@ -84,15 +87,15 @@ void powersetCOMB(int *valori, int n) {
 ```
 
 ```c
-void combSempR(int level, int *valori, int *soluzione, int n, int k, int start) {
-    if (level >= k) {
+void combSempR(int livello, int *valori, int *soluzione, int n, int k, int start) {
+    if (livello >= k) {
         // [[ PRINT ]] da 0 a k
         return;
     }
 
     for (int i = start; i < n; ++i) {
-        soluzione[level] = i;
-        combSempR(level + 1, valori, soluzione, n, k, i + 1);
+        soluzione[livello] = valori[i];
+        combSempR(livello + 1, valori, soluzione, n, k, i + 1);
     }
 }
 ```
@@ -108,10 +111,10 @@ Per ottenere una partizione in $k$ blocchi, si possono usare delle disposizioni 
 
 `Wrapper
 ```c
-void partizioniDISP(int *valori, int n, int k) {
+void partizioniDISPRIP(int *valori, int n, int k) {
     int *soluzione = calloc(n, sizeof(int));
 
-    dispRipR(0, valori, soluzione, n = k, k = n);
+    dispRipR(0, valori, soluzione, n: k, k: n);
 
     free(soluzione);
 }
@@ -159,28 +162,30 @@ Si divide in 2 ricorsioni:
 `Wrapper`
 ```c
 void er(int *valori, int n) {
-    int *soluzione = malloc(n * sizeof(int));
+    int *soluzione = calloc(n, sizeof(int));
+
     erR(0, valori, soluzione, n, 0);
+
     free(soluzione);
 }
 ```
 
 `Ricorsiva`
 ```c
-void erR(int level, int *valori, int *soluzione, int n, int m) {
-    if (level >= n) {
+void erR(int livello, int *valori, int *soluzione, int n, int m) {
+    if (livello >= n) {
         // [[ PRINT ]] da 0 a n elementi ognuno nel blocco soluzione[i]
 
         return;
     }
 
     for (int i = 0; i < m; ++i) {
-        soluzione[level] = i;
-        erR(level + 1, valori, soluzione, n, m);
+        soluzione[livello] = i;
+        erR(livello + 1, valori, soluzione, n, m);
     }
 
-    soluzione[level] = m;
-    erR(level + 1, valori, soluzione, n, m + 1);
+    soluzione[livello] = m;
+    erR(livello + 1, valori, soluzione, n, m + 1);
 }
 ```
 
@@ -189,27 +194,29 @@ Una versione più specifica è quando sappiamo già in quanti blocchi vogliamo p
 `Wrapper`
 ```c
 void erSpecific(int *valori, int n, int k) {
-    int *soluzione = malloc(n * sizeof(int));
+    int *soluzione = calloc(n, sizeof(int));
+
     erR(0, valori, soluzione, n, k, 0);
+
     free(soluzione);
 }
 ```
 
 `Ricorsiva`
 ```c
-void erSpecificR(int level, int *valori, int *soluzione, int n, int k, int m) {
-    if (level >= n) {
+void erSpecificR(int livello, int *valori, int *soluzione, int n, int k, int m) {
+    if (livello >= n) {
         // [[ PRINT ]] da 0 a n elementi ognuno nel blocco soluzione[i]
 
         return;
     }
 
     for (int i = 0; i < m; ++i) {
-        soluzione[level] = i;
-        erR(level + 1, valori, soluzione, n, m);
+        soluzione[livello] = i;
+        erR(livello + 1, valori, soluzione, n, m);
     }
 
-    soluzione[level] = m;
-    erR(level + 1, valori, soluzione, n, m + 1);
+    soluzione[livello] = m;
+    erR(livello + 1, valori, soluzione, n, m + 1);
 }
 ```
