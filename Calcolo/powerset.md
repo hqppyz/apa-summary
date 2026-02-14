@@ -128,7 +128,7 @@ void dispRipR(int livello, const int *valori, int *soluzione, int n, int k) {
         for (int m = 0; m < n; ++m) {
             int used = 0;
             for (int i = 0; i < k; ++i) {
-                if (soluzione[i] = m) {
+                if (soluzione[i] == m) {
                     used = 1;
                     break;
                 }
